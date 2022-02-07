@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">FirstCogn</string>
+    <string name="enter_nm">enter name</string>
+    <string name="enter_pwd">enter password</string>
+    <string name="login">sign in</string>
+    <string name="enter_pass">enter password</string>
+</resources>
