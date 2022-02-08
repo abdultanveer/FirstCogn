@@ -4,14 +4,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements View.OnFocusChangeListener {
     EditText nameEditText; //declaration
-
+    public static  String TAG = MainActivity.class.getSimpleName();
+                //"MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
         nameEditText = findViewById(R.id.etName); //initialized it -- getting handle
 
-
+        nameEditText.setOnFocusChangeListener(this); //this referes to the current instance of this class
 
         TextView mTextView = new TextView(this);
         mTextView.setText("text from java");
@@ -32,5 +34,18 @@ public class MainActivity extends AppCompatActivity {
 
         String value = nameEditText.getText().toString();   //using nameEdittext here
         Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
+    }
+
+    @Override
+    public void onFocusChange(View view, boolean hasFocus) {
+        if(hasFocus){
+            Toast.makeText(this, "got focus", Toast.LENGTH_SHORT).show();
+            Log.i(TAG,"has focus");
+        }
+        else {
+            Toast.makeText(this, "lost focus", Toast.LENGTH_SHORT).show();
+            Log.i(TAG,"lost focus");
+
+        }
     }
 }
