@@ -16,7 +16,8 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //inflation
-        nameEditText = findViewById(R.id.etName); //initialized it
+
+        nameEditText = findViewById(R.id.etName); //initialized it -- getting handle
 
 
 
@@ -29,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
 
     public void clickHandler(View view) {
 
-        String value = nameEditText.getText().toString();
+        String value = nameEditText.getText().toString();   //using nameEdittext here
         Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
     }
 }
