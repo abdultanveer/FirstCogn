@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
 
     public void clickHandler(View view) {
         String value = nameEditText.getText().toString();
-        Intent hIntent = new Intent(this,HomeActivity.class);
+        Intent hIntent = new Intent(this,HomeActivity.class); //explicit intent
         hIntent.putExtra("namekey",value);
         startActivity(hIntent);
        /*    //using nameEdittext here

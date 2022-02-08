@@ -1,5 +1,7 @@
 package com.abdul.firstcogn
 
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
@@ -14,5 +16,11 @@ class HomeActivity : AppCompatActivity() {
         //       String name = getIntent().getExtras().getString("namekey");
        var name = intent.extras?.getString("namekey")
         homeTv.text = name
+    }
+
+    fun handleClick(view: android.view.View) {
+        var dIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:123456")) //implicit intent
+
+        startActivity(dIntent)
     }
 }
