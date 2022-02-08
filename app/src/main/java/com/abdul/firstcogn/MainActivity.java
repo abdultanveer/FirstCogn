@@ -3,6 +3,7 @@ package com.abdul.firstcogn;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -31,9 +32,10 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
     }
 
     public void clickHandler(View view) {
-
-        String value = nameEditText.getText().toString();   //using nameEdittext here
-        Toast.makeText(this, value, Toast.LENGTH_SHORT).show();
+        Intent hIntent = new Intent(this,HomeActivity.class);
+        startActivity(hIntent);
+       /* String value = nameEditText.getText().toString();   //using nameEdittext here
+        Toast.makeText(this, value, Toast.LENGTH_SHORT).show();*/
     }
 
     @Override
