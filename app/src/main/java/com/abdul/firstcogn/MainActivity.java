@@ -5,6 +5,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.AlarmClock;
 import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
@@ -31,12 +32,33 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
     }
 
     public void clickHandler(View view) {
+        switch (view.getId()){
+            case R.id.button:
+                startHome();
+                break;
+            case R.id.btnAlarm:
+                createAlarm("midnight",00,49);
+                break;
+        }
+       // startHome();
+
+    }
+
+    public void createAlarm(String message, int hour, int minutes) {
+        Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM)
+                .putExtra(AlarmClock.EXTRA_MESSAGE, message)
+                .putExtra(AlarmClock.EXTRA_HOUR, hour)
+                .putExtra(AlarmClock.EXTRA_MINUTES, minutes);
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
+    }
+
+    private void startHome() {
         String value = nameEditText.getText().toString();
         Intent hIntent = new Intent(this,HomeActivity.class); //explicit intent
         hIntent.putExtra("namekey",value);
         startActivity(hIntent);
-       /*    //using nameEdittext here
-        Toast.makeText(this, value, Toast.LENGTH_SHORT).show();*/
     }
 
     @Override

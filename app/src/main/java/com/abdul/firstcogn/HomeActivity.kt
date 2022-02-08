@@ -4,6 +4,7 @@ import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.provider.AlarmClock
 import android.widget.TextView
 
 class HomeActivity : AppCompatActivity() {
@@ -19,6 +20,25 @@ class HomeActivity : AppCompatActivity() {
     }
 
     fun handleClick(view: android.view.View) {
+        when(view.id){
+            R.id.btnDial -> {startDialer()}
+            R.id.btnTimer -> {startTimer("milk", 10)}
+        }
+
+    }
+
+    fun startTimer(message: String, seconds: Int) {
+        val intent = Intent(AlarmClock.ACTION_SET_TIMER).apply {
+            putExtra(AlarmClock.EXTRA_MESSAGE, message)
+            putExtra(AlarmClock.EXTRA_LENGTH, seconds)
+            putExtra(AlarmClock.EXTRA_SKIP_UI, true)
+        }
+        if (intent.resolveActivity(packageManager) != null) {
+            startActivity(intent)
+        }
+    }
+
+    private fun startDialer() {
         var dIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:123456")) //implicit intent
 
         startActivity(dIntent)
