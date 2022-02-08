@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
             Log.i(TAG,"has focus");
         }
         else {
-            Toast.makeText(this, "lost focus", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.enter_pass, Toast.LENGTH_SHORT).show();
             Log.i(TAG,"lost focus");
 
         }

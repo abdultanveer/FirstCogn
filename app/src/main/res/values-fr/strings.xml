@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="enter_nm">entrez le nom</string>
+    <string name="enter_pwd">Entrer le mot de passe</string>
+    <string name="login"> s identifier</string>
+    <string name="enter_pass">enter password</string>
+</resources>
