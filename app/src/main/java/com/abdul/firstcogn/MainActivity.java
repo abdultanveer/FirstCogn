@@ -4,7 +4,9 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
 import android.os.Bundle;
+import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -18,5 +20,9 @@ public class MainActivity extends AppCompatActivity {
 
         ConstraintLayout cl = findViewById(R.id.container);
         cl.addView(mTextView);
+    }
+
+    public void clickHandler(View view) {
+        Toast.makeText(this, "welcome to android", Toast.LENGTH_SHORT).show();
     }
 }
