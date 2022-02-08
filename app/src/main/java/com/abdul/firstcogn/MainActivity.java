@@ -19,7 +19,6 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //inflation
-
         nameEditText = findViewById(R.id.etName); //initialized it -- getting handle
 
         nameEditText.setOnFocusChangeListener(this); //this referes to the current instance of this class
@@ -32,9 +31,11 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
     }
 
     public void clickHandler(View view) {
+        String value = nameEditText.getText().toString();
         Intent hIntent = new Intent(this,HomeActivity.class);
+        hIntent.putExtra("namekey",value);
         startActivity(hIntent);
-       /* String value = nameEditText.getText().toString();   //using nameEdittext here
+       /*    //using nameEdittext here
         Toast.makeText(this, value, Toast.LENGTH_SHORT).show();*/
     }
 
