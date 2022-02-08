@@ -5,6 +5,7 @@ import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
+import android.widget.EditText
 import android.widget.TextView
 
 class HomeActivity : AppCompatActivity() {
@@ -42,5 +43,15 @@ class HomeActivity : AppCompatActivity() {
         var dIntent = Intent(Intent.ACTION_DIAL, Uri.parse("tel:123456")) //implicit intent
 
         startActivity(dIntent)
+    }
+
+    fun closeActivity(view: android.view.View) { //step 2
+        //send the contact back to main activity
+        var etContact = findViewById<EditText>(R.id.etContact)
+        var phno = etContact.text.toString()
+        var dataIntent : Intent = Intent()
+        dataIntent.putExtra("phonenum", phno)
+        setResult(RESULT_OK,dataIntent)
+        finish()
     }
 }

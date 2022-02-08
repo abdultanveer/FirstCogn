@@ -1,5 +1,6 @@
 package com.abdul.firstcogn;
 
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
@@ -58,7 +59,19 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
         String value = nameEditText.getText().toString();
         Intent hIntent = new Intent(this,HomeActivity.class); //explicit intent
         hIntent.putExtra("namekey",value);
-        startActivity(hIntent);
+        startActivityForResult(hIntent,123); //step 1
+    }
+  //because in whatsapp chat.. you can go to fetch a contact/photo, location
+    //the point of return is same ie onActivityResult how do i differentiate which data you're getting
+    //that differentiation is made using the request
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode == 123){
+          String phno =  data.getExtras().getString("phonenum");
+          TextView tvMain = findViewById(R.id.tvMain);
+          tvMain.setText(phno);
+        }
     }
 
     @Override
