@@ -8,15 +8,19 @@ import android.provider.AlarmClock
 import android.util.Log
 import android.widget.EditText
 import android.widget.TextView
+import java.lang.NullPointerException
 
 class HomeActivity : AppCompatActivity() {
     lateinit var homeTv:TextView
     var TAG = HomeActivity::class.java.simpleName
 
+
     //from storage to ram
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
+        //Employee.COMPANY_NAME
+
         homeTv = findViewById(R.id.tvHome)
         Log.i(TAG, "creating")
         //       String name = getIntent().getExtras().getString("namekey");
@@ -28,9 +32,13 @@ class HomeActivity : AppCompatActivity() {
     override fun onStart() {
         super.onStart()
         Log.v(TAG, "starting")
+        add(10,20);
 
     }
 
+    fun add(a:Int, b: Int):Int{
+        return a+b
+    }
     //waking up
     override fun onResume() {
         super.onResume()

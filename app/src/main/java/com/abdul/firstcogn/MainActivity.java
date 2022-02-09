@@ -15,12 +15,15 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity implements View.OnFocusChangeListener {
     EditText nameEditText; //declaration
+    Student abdul;  //a ref variable is created on the stack memory
     public static  String TAG = MainActivity.class.getSimpleName();
                 //"MainActivity";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main); //inflation
+        abdul = new Student("ansari",123,3445); //this will create the object on heap memory
+
         nameEditText = findViewById(R.id.etName); //initialized it -- getting handle
 
         nameEditText.setOnFocusChangeListener(this); //this referes to the current instance of this class
@@ -30,6 +33,11 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
 
         ConstraintLayout cl = findViewById(R.id.container);
         cl.addView(mTextView);
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
     }
 
     public void clickHandler(View view) {
@@ -46,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
     }
 
     public void createAlarm(String message, int hour, int minutes) {
+        //Util myUtil = new Util();
+        //Util.add(10,20);
         Intent intent = new Intent(AlarmClock.ACTION_SET_ALARM)
                 .putExtra(AlarmClock.EXTRA_MESSAGE, message)
                 .putExtra(AlarmClock.EXTRA_HOUR, hour)
