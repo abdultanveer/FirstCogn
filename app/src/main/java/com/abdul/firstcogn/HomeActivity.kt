@@ -13,13 +13,50 @@ class HomeActivity : AppCompatActivity() {
     lateinit var homeTv:TextView
     var TAG = HomeActivity::class.java.simpleName
 
+    //from storage to ram
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         homeTv = findViewById(R.id.tvHome)
+        Log.i(TAG, "creating")
         //       String name = getIntent().getExtras().getString("namekey");
        /*var name = intent.extras?.getString("namekey")
         homeTv.text = name*/
+    }
+
+    //ui is visible - user can click button
+    override fun onStart() {
+        super.onStart()
+        Log.v(TAG, "starting")
+
+    }
+
+    //waking up
+    override fun onResume() {
+        super.onResume()
+        Log.w(TAG, "resuming -- restore the app state")
+
+    }
+
+    //partially visible --- sleep
+    override fun onPause() {
+        super.onPause()
+        Log.i(TAG, "pausing-- store app state")
+
+    }
+
+    //hibernate in windows - pushed out of ram into storage , why not purge
+    override fun onStop() {
+        super.onStop()
+        Log.e(TAG, "stopping")
+
+    }
+
+    //activity is purged -- no longer exists in memory or storage
+    override fun onDestroy() {
+        super.onDestroy()
+        Log.d(TAG, "destroying -- clean up(release resource)")
+
     }
 
     fun handleClick(view: android.view.View) {
