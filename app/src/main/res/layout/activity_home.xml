@@ -61,4 +61,15 @@
         android:text="finish"
         app:layout_constraintStart_toStartOf="@+id/etContact"
         app:layout_constraintTop_toBottomOf="@+id/etContact" />
+
+    <Button
+        android:id="@+id/btnCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="29dp"
+        android:layout_marginEnd="97dp"
+        android:text="calendar"
+        android:onClick="handleClick"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/etContact" />
 </androidx.constraintlayout.widget.ConstraintLayout>

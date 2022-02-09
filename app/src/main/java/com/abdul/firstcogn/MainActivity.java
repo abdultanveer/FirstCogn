@@ -57,16 +57,19 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
 
     private void startHome() {
         String value = nameEditText.getText().toString();
-        Intent hIntent = new Intent(this,HomeActivity.class); //explicit intent
+        Intent hIntent = new Intent(this, HomeActivity.class); //explicit intent
         hIntent.putExtra("namekey",value);
         startActivityForResult(hIntent,123); //step 1
+        Log.i(TAG, "starting homeactivity");
     }
   //because in whatsapp chat.. you can go to fetch a contact/photo, location
     //the point of return is same ie onActivityResult how do i differentiate which data you're getting
     //that differentiation is made using the request
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {  //dataIntent
         super.onActivityResult(requestCode, resultCode, data);
+        Log.i(TAG, "onActivityResult");
+
         if(requestCode == 123){
           String phno =  data.getExtras().getString("phonenum");
           TextView tvMain = findViewById(R.id.tvMain);
