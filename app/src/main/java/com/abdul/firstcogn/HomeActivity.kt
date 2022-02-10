@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
 import android.util.Log
+import android.view.Menu
+import android.view.MenuItem
 import android.view.View
 import android.widget.*
 import java.lang.NullPointerException
@@ -19,7 +21,7 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     //from storage to ram
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(R.layout.activity_home) //layoutinflater
         //Employee.COMPANY_NAME
         cSpinner = findViewById(R.id.countriesSpinner)
         homeTv = findViewById(R.id.tvHome)
@@ -27,6 +29,22 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         //       String name = getIntent().getExtras().getString("namekey");
        /*var name = intent.extras?.getString("namekey")
         homeTv.text = name*/
+    }
+
+
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+         super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.home_menu,menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+         super.onOptionsItemSelected(item)
+        when(item.itemId){
+            R.id.ngroup -> { Toast.makeText(this,"new group",Toast.LENGTH_SHORT).show()}
+            R.id.settings -> {Toast.makeText(this,"settings",Toast.LENGTH_SHORT).show() }
+        }
+        return true;
     }
 
     //ui is visible - user can click button

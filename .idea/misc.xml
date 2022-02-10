@@ -3,9 +3,11 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/flutterprojects/FirstCogn/app/src/main/res/drawable/ic_baseline_home_24.xml" value="0.15885416666666666" />
         <entry key="..\:/flutterprojects/FirstCogn/app/src/main/res/layout/activity_home.xml" value="0.27291666666666664" />
         <entry key="..\:/flutterprojects/FirstCogn/app/src/main/res/layout/activity_main.xml" value="0.5" />
         <entry key="..\:/flutterprojects/FirstCogn/app/src/main/res/layout/calculator.xml" value="0.27291666666666664" />
+        <entry key="..\:/flutterprojects/FirstCogn/app/src/main/res/menu/home_menu.xml" value="0.27291666666666664" />
       </map>
     </option>
   </component>
