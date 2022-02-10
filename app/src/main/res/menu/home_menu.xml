@@ -4,7 +4,7 @@
 
     <item android:id="@+id/ngroup"
         android:title="new group" />
-
-    <item android:id="@+id/settings"
+    <item
+        android:id="@+id/settings"
         android:title="settings" />
 </menu>

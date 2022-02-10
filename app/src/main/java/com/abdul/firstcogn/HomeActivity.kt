@@ -10,6 +10,7 @@ import android.view.Menu
 import android.view.MenuItem
 import android.view.View
 import android.widget.*
+import com.abdul.firstcogn.javabasics.Bike2
 import java.lang.NullPointerException
 
 class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
@@ -41,7 +42,13 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
          super.onOptionsItemSelected(item)
         when(item.itemId){
-            R.id.ngroup -> { Toast.makeText(this,"new group",Toast.LENGTH_SHORT).show()}
+            R.id.ngroup -> {
+                Toast.makeText(this,"new group",Toast.LENGTH_SHORT).show()
+                /*Bike2 obj = new Bike2();//creating object
+                obj.run()*/
+                var bike:Bike2 = Bike2()
+                Log.i(TAG,"bike is running safe"+bike.drive())
+            }
             R.id.settings -> {Toast.makeText(this,"settings",Toast.LENGTH_SHORT).show() }
         }
         return true;

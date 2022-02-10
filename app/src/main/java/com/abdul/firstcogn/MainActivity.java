@@ -1,5 +1,6 @@
 package com.abdul.firstcogn;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -9,6 +10,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.provider.AlarmClock;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -91,7 +94,7 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
     @Override
     public void onFocusChange(View view, boolean hasFocus) {
         if(hasFocus){
-            Toast.makeText(this, "got focus", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "got focus", Toast.LENGTH_SHORT).show(); //this = instance of MainActivity()
             Log.i(TAG,"has focus");
         }
         else {
@@ -99,5 +102,25 @@ public class MainActivity extends AppCompatActivity implements View.OnFocusChang
             Log.i(TAG,"lost focus");
 
         }
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+         super.onCreateOptionsMenu(menu);
+         getMenuInflater().inflate(R.menu.home_menu,menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+         super.onOptionsItemSelected(item);
+         switch (item.getItemId()){
+             case R.id.ngroup:
+
+                 break;
+             case R.id.settings:
+                 break;
+         }
+        return true;
     }
 }
