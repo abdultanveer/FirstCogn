@@ -6,13 +6,14 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.AlarmClock
 import android.util.Log
-import android.widget.EditText
-import android.widget.TextView
+import android.view.View
+import android.widget.*
 import java.lang.NullPointerException
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     lateinit var homeTv:TextView
     var TAG = HomeActivity::class.java.simpleName
+   lateinit var cSpinner:Spinner;
 
 
     //from storage to ram
@@ -20,7 +21,7 @@ class HomeActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
         //Employee.COMPANY_NAME
-
+        cSpinner = findViewById(R.id.countriesSpinner)
         homeTv = findViewById(R.id.tvHome)
         Log.i(TAG, "creating")
         //       String name = getIntent().getExtras().getString("namekey");
@@ -31,6 +32,7 @@ class HomeActivity : AppCompatActivity() {
     //ui is visible - user can click button
     override fun onStart() {
         super.onStart()
+        cSpinner.onItemSelectedListener = this
         Log.v(TAG, "starting")
         add(10,20);
 
@@ -109,5 +111,13 @@ class HomeActivity : AppCompatActivity() {
         dataIntent.putExtra("phonenum", phno)
         setResult(RESULT_OK,dataIntent)
         finish()
+    }
+
+    override fun onItemSelected(adapter: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
+        var item = adapter?.getItemAtPosition(position).toString()
+        Toast.makeText(this,item,Toast.LENGTH_SHORT).show()
+    }
+
+    override fun onNothingSelected(p0: AdapterView<*>?) {
     }
 }
