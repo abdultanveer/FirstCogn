@@ -13,10 +13,12 @@ import android.widget.*
 import com.abdul.firstcogn.javabasics.Bike2
 import java.lang.NullPointerException
 
-class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
-    lateinit var homeTv:TextView
+class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
+    RadioGroup.OnCheckedChangeListener {
+    lateinit var homeTv: TextView
     var TAG = HomeActivity::class.java.simpleName
-   lateinit var cSpinner:Spinner;
+    lateinit var cSpinner: Spinner;
+    lateinit var radioGroup: RadioGroup
 
 
     //from storage to ram
@@ -25,31 +27,35 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         setContentView(R.layout.activity_home) //layoutinflater
         //Employee.COMPANY_NAME
         cSpinner = findViewById(R.id.countriesSpinner)
+        radioGroup = findViewById(R.id.radioGroup)
+        radioGroup.setOnCheckedChangeListener(this)
         homeTv = findViewById(R.id.tvHome)
         Log.i(TAG, "creating")
         //       String name = getIntent().getExtras().getString("namekey");
-       /*var name = intent.extras?.getString("namekey")
-        homeTv.text = name*/
+        /*var name = intent.extras?.getString("namekey")
+         homeTv.text = name*/
     }
 
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-         super.onCreateOptionsMenu(menu)
-        menuInflater.inflate(R.menu.home_menu,menu)
+        super.onCreateOptionsMenu(menu)
+        menuInflater.inflate(R.menu.home_menu, menu)
         return true
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-         super.onOptionsItemSelected(item)
-        when(item.itemId){
+        super.onOptionsItemSelected(item)
+        when (item.itemId) {
             R.id.ngroup -> {
-                Toast.makeText(this,"new group",Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "new group", Toast.LENGTH_SHORT).show()
                 /*Bike2 obj = new Bike2();//creating object
                 obj.run()*/
-                var bike:Bike2 = Bike2()
-                Log.i(TAG,"bike is running safe"+bike.drive())
+                var bike: Bike2 = Bike2()
+                Log.i(TAG, "bike is running safe" + bike.drive())
             }
-            R.id.settings -> {Toast.makeText(this,"settings",Toast.LENGTH_SHORT).show() }
+            R.id.settings -> {
+                Toast.makeText(this, "settings", Toast.LENGTH_SHORT).show()
+            }
         }
         return true;
     }
@@ -59,12 +65,12 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
         super.onStart()
         cSpinner.onItemSelectedListener = this
         Log.v(TAG, "starting")
-        add(10,20);
+        add(10, 20);
 
     }
 
-    fun add(a:Int, b: Int):Int{
-        return a+b
+    fun add(a: Int, b: Int): Int {
+        return a + b
     }
 
 
@@ -97,10 +103,16 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun handleClick(view: android.view.View) {
-        when(view.id){
-            R.id.btnDial -> {startDialer()}
-            R.id.btnTimer -> {startTimer("milk", 10)}
-            R.id.btnCalendar -> {startCalendar()}
+        when (view.id) {
+            R.id.btnDial -> {
+                startDialer()
+            }
+            R.id.btnTimer -> {
+                startTimer("milk", 10)
+            }
+            R.id.btnCalendar -> {
+                startCalendar()
+            }
         }
 
     }
@@ -128,21 +140,33 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener {
     }
 
     fun closeActivity(view: android.view.View) { //step 2
-        Log.i(TAG,"closeActivity");
+        Log.i(TAG, "closeActivity");
         //send the contact back to main activity
         var etContact = findViewById<EditText>(R.id.etContact)
         var phno = etContact.text.toString()
-        var dataIntent : Intent = Intent()
+        var dataIntent: Intent = Intent()
         dataIntent.putExtra("phonenum", phno)
-        setResult(RESULT_OK,dataIntent)
+        setResult(RESULT_OK, dataIntent)
         finish()
     }
 
     override fun onItemSelected(adapter: AdapterView<*>?, p1: View?, position: Int, p3: Long) {
         var item = adapter?.getItemAtPosition(position).toString()
-        Toast.makeText(this,item,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, item, Toast.LENGTH_SHORT).show()
     }
 
     override fun onNothingSelected(p0: AdapterView<*>?) {
+    }
+
+    override fun onCheckedChanged(p0: RadioGroup?, checkedId: Int) {
+        when (checkedId) {
+            R.id.male -> {
+                Toast.makeText(this, "male", Toast.LENGTH_SHORT).show()
+            }
+            R.id.female -> {
+                Toast.makeText(this, "female", Toast.LENGTH_SHORT).show()
+            }
+
+        }
     }
 }
