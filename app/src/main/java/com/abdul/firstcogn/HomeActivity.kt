@@ -39,6 +39,8 @@ class HomeActivity : AppCompatActivity() {
     fun add(a:Int, b: Int):Int{
         return a+b
     }
+
+
     //waking up
     override fun onResume() {
         super.onResume()
