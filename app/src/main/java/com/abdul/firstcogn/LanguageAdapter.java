@@ -11,8 +11,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import kotlin.jvm.internal.Lambda;
 
 public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.LangViewHolder> {
-
+    String[] mLanguages;
     public LanguageAdapter(String[] languages) {
+        mLanguages = languages;
     }
 
     @NonNull
@@ -24,12 +25,13 @@ public class LanguageAdapter extends RecyclerView.Adapter<LanguageAdapter.LangVi
 
     @Override //john -- handwriting -- write the data on the planks textview
     public void onBindViewHolder(@NonNull LangViewHolder holder, int position) {
+        holder.rowTextview.setText(mLanguages[position]);
 
     }
 
     @Override //christine -- keep the count of no items in the data
     public int getItemCount() {
-        return 0;
+        return mLanguages.length;
     }
 
     //derek -- maintains the box containing row planks

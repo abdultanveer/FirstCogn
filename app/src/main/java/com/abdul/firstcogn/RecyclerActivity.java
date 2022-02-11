@@ -1,6 +1,7 @@
 package com.abdul.firstcogn;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
@@ -15,6 +16,8 @@ String[] languages = new String[] {"english","hindi","french","arabic",
 
         RecyclerView lRecyclerView = findViewById(R.id.lrecycler_view);
         LanguageAdapter adapter = new LanguageAdapter(languages);
+        lRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+        lRecyclerView.setAdapter(adapter);
 
     }
 }
