@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.abdul.firstcogn">
+
     <uses-permission android:name="com.android.alarm.permission.SET_ALARM" />
 
     <application
@@ -11,8 +12,8 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.FirstCogn">
         <activity
-            android:name=".HomeActivity"
-            android:exported="true" >
+            android:name=".RecyclerActivity"
+            android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,10 +21,13 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".HomeActivity"
             android:exported="true">
 
         </activity>
+        <activity
+            android:name=".MainActivity"
+            android:exported="true"></activity>
     </application>
 
 </manifest>

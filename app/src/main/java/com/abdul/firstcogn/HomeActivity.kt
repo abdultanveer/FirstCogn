@@ -69,6 +69,9 @@ class HomeActivity : AppCompatActivity(), AdapterView.OnItemSelectedListener,
 
     }
 
+    /**
+     * this method is for adding two nos
+     */
     fun add(a: Int, b: Int): Int {
         return a + b
     }
