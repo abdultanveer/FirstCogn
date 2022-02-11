@@ -1,6 +1,7 @@
 package com.abdul.firstcogn;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -11,5 +12,8 @@ String[] languages = new String[] {"english","hindi","french","arabic",
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recycler);
+
+        RecyclerView lRecyclerView = findViewById(R.id.lrecycler_view);
+
     }
 }
